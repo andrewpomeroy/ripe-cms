@@ -29,7 +29,6 @@ export class App extends Component {
     try {
       _data = await this.fetchContent();
       this.setState({ data: _data });
-      console.log("%c💣️ data", "background: aliceblue; color: dodgerblue; font-weight: bold", _data);
     } catch (e) {
       console.error(e);
     }

@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vite build",
-    "prettier": "prettier --write '**/*.{js,jsx,css,html}'"
+    "prettier": "prettier --write '**/*.{js,jsx,css,html}'",
+    "bundle": "esbuild --format=iife --bundle ./src/main.tsx --outfile=./dist/bundle.js"
   },
   "dependencies": {
     "@portabletext/to-html": "^1.0.3",
@@ -17,6 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.14.34",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",

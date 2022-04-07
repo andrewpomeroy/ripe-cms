@@ -2,6 +2,13 @@
 import { h, render } from 'preact';
 import { App } from './App';
 
-import './style.css';
+const ripe_menu_app_id_default = "ripe-menu-app";
+let appId;
+try {
+  appId = ripe_menu_app_id;
+}
+catch(e) {
+  appId = ripe_menu_app_id_default;
+}
 
-render(<App />, document.querySelector('#app'));
+render(<App />, document.querySelector(`#${appId}`));

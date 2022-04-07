@@ -1,9 +1,14 @@
+body {
+  background-color: #555;
+  color: #ddd;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   margin-top: 60px;
 }
 
@@ -11,6 +16,7 @@ pre {
   max-width: 100%;
   overflow: auto;
   padding: 1em;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
+  background-color: rgba(255,255,255,0.1);
   border-radius: 5px;
 }

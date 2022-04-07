@@ -1,27 +1,47 @@
 /** @jsx h */
-import { h } from 'preact';
+import { Component, h } from 'preact';
+import { Renderer } from './Renderer';
 // import { ButtonCounter } from './ButtonCounter';
+const url =
+  "https://omde8c75.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20'menu'%5D%7B%0A%20%20columns%5B%5D%20%7B%0A%20%20%20%20content%5B%5D%20%7B%0A%20%20%20%20%20%20menuSectionHeading%2C%0A%20%20%20%20%20%20menuSectionItems%5B%5D%20%7B%0A%20%20%20%20%20%20%20%20name%2C%0A%20%20%20%20%20%20%20%20price%2C%0A%20%20%20%20%20%20%20%20description%5B%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%0A%7D";
 
-export const App = ({ html }) => {
-  const onChildClicked = (e) => {
-    console.warn('callback from parent triggered', e);
+export class App extends Component {
+
+  constructor(props) {
+    super();
+    this.state = {
+      data: null,
+    }
+  }
+
+  fetchContent = async () => {
+    try {
+      const result = await fetch(url);
+      const data = result.json();
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  runQuery = async () => {
+    let _data;
+    try {
+      _data = await this.fetchContent();
+      this.setState({ data: _data });
+      console.log("%c💣️ data", "background: aliceblue; color: dodgerblue; font-weight: bold", _data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  return (
-    <div class="container pt-2">
-      {/* <h1>Preact Jsx Starter Template</h1>
+  componentDidMount() {
+    this.runQuery();
+  }
 
-      <p>Simple Preact JSX Template with a custom ButtonCounter Component</p>
-
-      <ButtonCounter name="Preact JSX" onClicked={(e) => onChildClicked(e)} /> */}
-
-      <div
-        dangerouslySetInnerHTML={{
-          __html: html,
-        }}
-      />
-
-      {/* <pre>{html}</pre> */}
-    </div>
-  );
+  render() {
+    return (
+      <Renderer data={this.state.data} />
+    )
+  }
 };

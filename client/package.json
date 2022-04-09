@@ -1,6 +1,6 @@
 {
   "name": "preact-vite-starter",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "npm run bundle",
@@ -8,6 +8,8 @@
     "bundle": "esbuild --format=iife --bundle ./src/main.tsx --outfile=./dist/bundle.js"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@portabletext/to-html": "^1.0.3",
     "preact": "^10.5.14",
     "preact-router": "^3.2.1"

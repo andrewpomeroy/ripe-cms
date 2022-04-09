@@ -1,0 +1,157 @@
+html { font-size: 18px; }
+:root {
+	--color-background: #fff3dc;
+    --color-background-alpha-25: rgba(255, 243, 220, 0.25);
+    --color-background-alpha-35: rgba(255, 243, 220, 0.35);
+    --color-background-alpha-60: rgba(255, 243, 220, 0.6);
+    --color-background-overlay: rgba(255, 243, 220, 0.9);
+    --color-background-table-header: #dc9100;
+    --color-heading: #004d43;
+    --color-text: #004d43;
+    --color-text-alpha-5: rgba(0, 77, 67, 0.05);
+    --color-text-alpha-8: rgba(0, 77, 67, 0.08);
+    --color-text-alpha-10: rgba(0, 77, 67, 0.1);
+    --color-text-alpha-25: rgba(0, 77, 67, 0.25);
+    --color-text-alpha-30: rgba(0, 77, 67, 0.3);
+    --color-text-alpha-55: rgba(0, 77, 67, 0.55);
+    --color-text-alpha-60: rgba(0, 77, 67, 0.6);
+    --color-label: rgba(0, 77, 67, 0.8);
+    --color-input-placeholder: rgba(0, 77, 67, 0.5);
+    --color-cart-text: rgba(0, 77, 67, 0.6);
+    --color-border: #004d43;
+    --color-border-dark: #004d43;
+    --color-border-alt: #FFF4DD;  
+    --color-accent-line: #cfddbb;
+    --color-error: #e35252;
+    --color-header-bg: #fff3dc;
+    --color-header-text: #004d43;
+    --color-header-bg-home: rgba(0,0,0,0);
+    --color-header-text-home: #fff3dc;
+    --color-header-bg-scroll: #cfddbb;
+    --color-header-text-scroll: #004d43;
+    --color-header-icon: #004d43;
+    --color-header-icon-bg: #cfddbb;
+    --color-header-icon-home: #004d43;
+    --color-header-icon-bg-home: #fff3dc;
+    --color-header-icon-scroll: #fff3dc;
+    --color-header-icon-bg-scroll: #004d43;
+    --color-dropdown-bg: #004d43;
+    --color-dropdown-text: #fff3dc;
+    --color-drawer-text: #000;
+    --color-drawer-bg: rgba(0,0,0,0);
+    --color-badge-text: #004D43;
+    --color-badge-bg: #cfddbb;
+    --color-button-primary-bg: #fff3dc;
+    --color-button-primary-text: #004D43;
+    --color-button-primary-border: #004D43;
+    --color-button-secondary-bg: #004d43;
+    --color-button-secondary-text: #FFF4DD;
+    --color-button-secondary-border: #004d43;
+	--color-button-alt-bg: transparent;
+    --color-button-alt-text: #004D43;
+    --color-button-alt-border: #004D43;
+    --color-top-bar-text: #004d43;
+    --color-top-bar-bg: #cfddbb;
+	--color-footer-text: #fff3dc;
+    --color-footer-placeholder-text: rgba(255, 243, 220, 0.5);
+    --color-footer-bg: #004d43;
+    --color-footer-bg-hover: rgba(255, 243, 220, 0.05);
+    --color-footer-bottom-text: rgba(255, 243, 220, 0.7);
+    --color-footer-bottom-bg: #004d43;
+    --color-footer-bottom-bg-hover: rgba(255, 243, 220, 0.05);
+    --color-footer-bottom-border: rgba(255, 243, 220, 0.1);
+    --color-search-overlay: rgba(51, 51, 51, 0.5);
+
+    --body-letter-spacing: 0px;
+    --heading-letter-spacing: 1px;
+
+    --body-font-family: adobe-caslon-pro, Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+    --heading-font-family: Platform Web, "Harmonia Sans", sans-serif;
+
+    --body-font-weight: 400;
+    --heading-font-weight: 900;
+
+    --body-font-style: normal;
+    --heading-font-style: normal;
+
+    --body-font-weight-medium: 400;
+    --body-font-weight-bold: 700;
+
+    --heading-font-weight-bold: 700;
+
+    --font-size-body: 18px;
+    --font-size-base: 16px;
+
+    --font-size-h1: 56.0px;
+    --font-size-h2: 36.56px;
+    --font-size-h3: 25.12px;
+    --font-size-h4: 18.4px;
+    --font-size-h5: 16.0px;
+    --font-size-h6: 12.8px;
+
+    --font-size-h1-mobile: 34.272px;
+    --font-size-h2-mobile: 28.56px;
+
+    --font-size-banner-text: 21.6px;
+    --font-size-banner-text-mobile: 20.556px;
+
+    --font-size-logo: 30.78px;
+
+    --icon-loader: url( "//cdn.shopify.com/s/files/1/0476/9579/0238/t/22/assets/loader.svg?v=2976167597111298891" );
+    --icon-zoom-in: url( "//cdn.shopify.com/s/files/1/0476/9579/0238/t/22/assets/icon-zoom-in.svg?v=6646344003026081831" );
+    --icon-zoom-out: url( "//cdn.shopify.com/s/files/1/0476/9579/0238/t/22/assets/icon-zoom-out.svg?v=1944711729941237442" );
+
+    --image-size: cover;
+    --image-aspect-ratio: 110.0%;
+    --image-aspect-ratio-half: 55.0%;
+}
+
+    @font-face {
+    font-family: "Harmonia Sans";
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/harmonia_sans/harmoniasans_n9.4646a262fe85cf96a93b88311b95c5c5f4588d22.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=aa29017e9c47a36b00d79b51fd2886cc1d17042b7ec979f3907ae44d2bfefadd") format("woff2"),
+        url("https://fonts.shopifycdn.com/harmonia_sans/harmoniasans_n9.dabdbffb658ce2e247bb0a0b879ca4314101c8bc.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=f7e872df7bace5b9ea04ab7702af54e731f6493f0211787e11446a474edbceac") format("woff");
+  }
+  ;
+    @font-face {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.fe093fe9ca22a15354813c912484945a36b79146.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=7c27537694e788b6fe968b76c7891b41863b9efd7b327e634de6d9641177bebe") format("woff2"),
+        url("https://fonts.shopifycdn.com/helvetica/helvetica_n4.8bddb85c18a0094c427a9bf65dee963ad88de4e8.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=83acc7976695d9de48a9687f75ce7622ec52983d6eecf583e14ca7d68c30aecd") format("woff");
+  }
+  ;@font-face {
+    font-family: "Harmonia Sans";
+    font-weight: 900;
+    font-style: italic;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/harmonia_sans/harmoniasans_i9.6f802775f2ad1c643e4593335a6c150da22f518c.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=698016e273f1dde323a53e1c905f6e3cbe29bb59b8ad1022a6f9d2a3c9db6be5") format("woff2"),
+        url("https://fonts.shopifycdn.com/harmonia_sans/harmoniasans_i9.75cd6d9020aafeef0ec30b9fdbc237d6e122a1aa.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=00d2082de7f067cc17b5a20f730c12109eaf0afb20549721f9ed266eeab45f2c") format("woff");
+  }
+  ;@font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: normal;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.39bee04bd277a9c4e94e2fd42d53f4e3c0afb8a5.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=df759d982e7a03d6137913b3681eeadefc5b9449c010c8155a7a6c7ef6c99ea2") format("woff2"),
+        url("https://fonts.shopifycdn.com/helvetica/helvetica_n7.b95359461a6788d5549e702cb2123bc40c227e49.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=7f5c8a14be6a7f4d67c2026d5e03bad7ce745db46f22c423d357dea28b8a2149") format("woff");
+  }
+  ;@font-face {
+    font-family: Helvetica;
+    font-weight: 400;
+    font-style: oblique;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.f9832a0fc1ee8fc5a359636e410d6941e1e4ca03.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=f787b8f5932376c6de9f3d0e71e212a9f90b16cfc612c2bf76182a9212c6bdde") format("woff2"),
+        url("https://fonts.shopifycdn.com/helvetica/helvetica_o4.0063286aec443697ebae04eeb9c78b820f9f7805.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=4426a03c82431cec1cdca56418e7c5fdc9b1bc9948c60b8b734f55d4c8499478") format("woff");
+  }
+  ;@font-face {
+    font-family: Helvetica;
+    font-weight: 700;
+    font-style: oblique;
+    font-display: fallback;
+    src: url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.215fd4ca1a06214fa01e44328a1992c977700ea2.woff2?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=e34cb7be8686ca28805ec88859f4dc90342fe788112f33d23a9661adbaa5a10c") format("woff2"),
+        url("https://fonts.shopifycdn.com/helvetica/helvetica_o7.b0a2026ae2aa64d060f9ce0ee1b3c3c1aa21bf88.woff?h1=cmlwZWNvb3BlcmF0aXZlLmNvbQ&h2=YmVhc3RwZHguY29t&hmac=c7eed0607acd65b6d0b532cc96a29a2432eb10b4420f679256ad6666ef492118") format("woff");
+  }

@@ -10,5 +10,6 @@ try {
 catch(e) {
   appId = ripe_menu_app_id_default;
 }
+console.log(`appId: ${appId}`);
 
 render(<App />, document.querySelector(`#${appId}`));

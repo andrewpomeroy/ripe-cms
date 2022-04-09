@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build",
+    "build": "npm run bundle",
     "prettier": "prettier --write '**/*.{js,jsx,css,html}'",
     "bundle": "esbuild --format=iife --bundle ./src/main.tsx --outfile=./dist/bundle.js"
   },

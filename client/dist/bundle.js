@@ -3198,14 +3198,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var emotion_styled_browser_esm_default = newStyled;
 
   // src/RenderComponents.jsx
-  var sectionMarginY = "80px";
   var menuMarginX = "20px";
   var menuMarginY = "40px";
   var MenuContainer = emotion_styled_browser_esm_default.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: ${sectionMarginY} 0;
 `;
   var Menus = emotion_styled_browser_esm_default.ul`
   max-width: 100%;
@@ -3226,14 +3224,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   margin-bottom: ${menuMarginY};
 `;
   var Menu = emotion_styled_browser_esm_default.div`
-  padding: 1rem;
+  padding: 0 40px;
   border-radius: 5px;
   background-color: white;
 `;
   var MenuTitle = emotion_styled_browser_esm_default.h3`
   text-align: center;
   font-size: 38px;
-  margin: .25em 0 .5em;
+  margin: 0;
+  padding: .75em 0;
 `;
   var columnMarginX = "20px";
   var MenuColumns = emotion_styled_browser_esm_default.ul`
@@ -3273,7 +3272,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 float: right;
   font-size: 16px;
   line-height: 18px;
-  font-weight: bold;
 `;
   var MenuItemDescription = emotion_styled_browser_esm_default.div`
   p {

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const sectionMarginY = "80px";
+// const sectionMarginY = "80px";
 const menuMarginX = "20px";
 const menuMarginY = "40px";
 
@@ -8,7 +8,6 @@ export const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: ${sectionMarginY} 0;
 `
 
 export const Menus = styled.ul`
@@ -32,7 +31,7 @@ export const MenuWrapper = styled.li`
 `
 
 export const Menu = styled.div`
-  padding: 1rem;
+  padding: 0 40px;
   border-radius: 5px;
   background-color: white;
 `
@@ -40,7 +39,8 @@ export const Menu = styled.div`
 export const MenuTitle = styled.h3`
   text-align: center;
   font-size: 38px;
-  margin: .25em 0 .5em;
+  margin: 0;
+  padding: .75em 0;
 `
 
 const columnMarginX = "20px";
@@ -82,7 +82,6 @@ export const MenuItemPrice = styled.div`
 float: right;
   font-size: 16px;
   line-height: 18px;
-  font-weight: bold;
 `
 export const MenuItemDescription = styled.div`
   p {

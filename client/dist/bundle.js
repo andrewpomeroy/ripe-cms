@@ -3221,12 +3221,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   max-width: 1600px;
   margin-left: ${menuMarginX};
   margin-right: ${menuMarginX};
-  margin-bottom: ${menuMarginY};
+  padding-bottom: ${menuMarginY};
 `;
   var Menu = emotion_styled_browser_esm_default.div`
   padding: 0 40px;
   border-radius: 5px;
-  background-color: white;
+  background-color: #fefaf4;
 `;
   var MenuTitle = emotion_styled_browser_esm_default.h3`
   text-align: center;
@@ -3249,24 +3249,26 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var MenuSections = emotion_styled_browser_esm_default.ul``;
   var MenuSection = emotion_styled_browser_esm_default.li`
   &:not(:last-child) {
-    margin-bottom: 18px;
+    padding-bottom: 18px;
   }
 `;
   var MenuSectionHeading = emotion_styled_browser_esm_default.h4`
   font-size: 18px;
   padding-bottom: .05em;
-  border-bottom: 2px solid;
   margin-bottom: 24px;
+  border-bottom: 2px solid;
 `;
   var MenuItems = emotion_styled_browser_esm_default.ul``;
   var MenuItem = emotion_styled_browser_esm_default.li`
-  margin-bottom: 24px;
+  &:not(:last-child) {
+    padding-bottom: 24px;
+  }
 `;
   var MenuItemName = emotion_styled_browser_esm_default.h5`
   font-size: 18px;
   line-height: 18px;
   font-weight: 500;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
 `;
   var MenuItemPrice = emotion_styled_browser_esm_default.div`
 float: right;
@@ -3276,7 +3278,7 @@ float: right;
   var MenuItemDescription = emotion_styled_browser_esm_default.div`
   p {
     font-size: 15px;
-    margin-bottom: 0;
+    padding-bottom: 0;
     line-height: 1.25;
   }
 `;
@@ -3287,7 +3289,6 @@ float: right;
     if (data) {
       menus = data.result;
     }
-    console.log("%c\u{1F4A3}\uFE0F menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
     if (menus)
       return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => /* @__PURE__ */ v(MenuWrapper, {
         key: menu.title
@@ -3333,9 +3334,11 @@ float: right;
       this.runQuery();
     }
     render() {
-      return /* @__PURE__ */ v(Renderer, {
+      return /* @__PURE__ */ v(React.Fragment, null, /* @__PURE__ */ v(Renderer, {
         data: this.state.data
-      });
+      }), /* @__PURE__ */ v(Renderer, {
+        data: this.state.data
+      }));
     }
   };
 

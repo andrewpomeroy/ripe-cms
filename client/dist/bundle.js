@@ -3334,11 +3334,9 @@ float: right;
       this.runQuery();
     }
     render() {
-      return /* @__PURE__ */ v(React.Fragment, null, /* @__PURE__ */ v(Renderer, {
+      return /* @__PURE__ */ v(Renderer, {
         data: this.state.data
-      }), /* @__PURE__ */ v(Renderer, {
-        data: this.state.data
-      }));
+      });
     }
   };
 

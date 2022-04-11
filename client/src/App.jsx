@@ -1,5 +1,5 @@
 /** @jsx h */
-import { Component, h } from 'preact';
+import { Component, h, Fragment } from 'preact';
 import { Renderer } from './Renderer';
 // import { ButtonCounter } from './ButtonCounter';
 const url =
@@ -40,7 +40,10 @@ export class App extends Component {
 
   render() {
     return (
-      <Renderer data={this.state.data} />
+      <>
+        <Renderer data={this.state.data} />
+        <Renderer data={this.state.data} />
+      </>
     )
   }
 };

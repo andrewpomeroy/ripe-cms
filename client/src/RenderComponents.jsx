@@ -27,13 +27,13 @@ export const MenuWrapper = styled.li`
   max-width: 1600px;
   margin-left: ${menuMarginX};
   margin-right: ${menuMarginX};
-  margin-bottom: ${menuMarginY};
+  padding-bottom: ${menuMarginY};
 `
 
 export const Menu = styled.div`
   padding: 0 40px;
   border-radius: 5px;
-  background-color: white;
+  background-color: #fefaf4;
 `
 
 export const MenuTitle = styled.h3`
@@ -59,24 +59,26 @@ export const MenuColumn = styled.li`
 export const MenuSections = styled.ul``
 export const MenuSection = styled.li`
   &:not(:last-child) {
-    margin-bottom: 18px;
+    padding-bottom: 18px;
   }
 `
 export const MenuSectionHeading = styled.h4`
   font-size: 18px;
   padding-bottom: .05em;
-  border-bottom: 2px solid;
   margin-bottom: 24px;
+  border-bottom: 2px solid;
 `
 export const MenuItems = styled.ul``
 export const MenuItem = styled.li`
-  margin-bottom: 24px;
+  &:not(:last-child) {
+    padding-bottom: 24px;
+  }
 `
 export const MenuItemName = styled.h5`
   font-size: 18px;
   line-height: 18px;
   font-weight: 500;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
 `
 export const MenuItemPrice = styled.div`
 float: right;
@@ -86,7 +88,7 @@ float: right;
 export const MenuItemDescription = styled.div`
   p {
     font-size: 15px;
-    margin-bottom: 0;
+    padding-bottom: 0;
     line-height: 1.25;
   }
 `

@@ -21,26 +21,12 @@ import {
 
 export const Renderer = ({ data }) => {
 
-  // let html;
-  // if (data) {
-  //   const formatted = JSON.stringify(data, null, 2);
-  //   const blocks =
-  //     data.result[0].columns[0].content[0].menuSectionItems[0].description;
-  //   html = toHTML(blocks);
-  // }
   let menus;
   if (data) {
     menus = data.result;
   }
 
-  console.log("%c💣️ menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
-
   if (menus) return (
-    // <div
-    //   dangerouslySetInnerHTML={{
-    //     __html: html,
-    //   }}
-    // />
     <MenuContainer>
       <Menus>
         {menus.map(menu => 

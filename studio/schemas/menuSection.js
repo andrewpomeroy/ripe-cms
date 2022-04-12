@@ -23,6 +23,17 @@ const menuSection = {
     //   title: "description",
     // },
   ],
+  preview: {
+    select: {
+      menuSectionHeading: 'menuSectionHeading',
+    },
+    prepare({ menuSectionHeading }) {
+      return {
+        title: menuSectionHeading || "Section",
+      }
+    }
+  },
+
 }
 
 export default menuSection;

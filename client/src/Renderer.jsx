@@ -19,6 +19,7 @@ import {
   MenuItemDescription,
   MenuSubtitle,
   MenuHeader,
+  MenuSectionSeparator,
 } from './RenderComponents';
 
 export const Renderer = ({ data }) => {
@@ -33,41 +34,47 @@ export const Renderer = ({ data }) => {
   if (menus) return (
     <MenuContainer>
       <Menus>
-        {menus.map(menu => 
-          <MenuWrapper key={menu.title}>
-            <Menu key={menu.title}>
-              <MenuHeader>
-                <MenuTitle>{menu.title}</MenuTitle>
-                {menu.subtitle?.length && <MenuSubtitle dangerouslySetInnerHTML={{
-                  __html: toHTML(menu.subtitle)
-                }} />}
-              </MenuHeader>
-              <MenuColumns>
-                {menu.columns.map((column) => (
-                  <MenuColumn>
-                    <MenuSections>
-                      {column.content.map(({ menuSectionHeading, menuSectionItems }) => (
-                        <MenuSection>
-                          <MenuSectionHeading>{menuSectionHeading}</MenuSectionHeading>
-                          <MenuItems>
-                            {menuSectionItems.map(item => (
-                              <MenuItem>
-                                <MenuItemPrice>{item.price}</MenuItemPrice>
-                                <MenuItemName>{item.name}</MenuItemName>
-                                {item.description && <MenuItemDescription dangerouslySetInnerHTML={{
-                                  __html: toHTML(item.description)
-                                }} />}
-                              </MenuItem>
-                            ))}
-                          </MenuItems>
-                        </MenuSection>
-                      ))}
-                    </MenuSections>
-                  </MenuColumn>
-                ))}
-              </MenuColumns>
-            </Menu>
-          </MenuWrapper>
+        {menus.map(menu => {
+          const isSingleColumn = menu.columns?.length === 1;
+          return (
+            <MenuWrapper key={menu.title} isSingleColumn={isSingleColumn}>
+              <Menu key={menu.title} isSingleColumn={isSingleColumn}>
+                <MenuHeader>
+                  <MenuTitle>{menu.title}</MenuTitle>
+                  {menu.subtitle?.length && <MenuSubtitle dangerouslySetInnerHTML={{
+                    __html: toHTML(menu.subtitle)
+                  }} />}
+                </MenuHeader>
+                <MenuColumns>
+                  {menu.columns.map((column) => (
+                    <MenuColumn isSingleColumn={isSingleColumn}>
+                      <MenuSections>
+                        {column.content.map(({ menuSectionHeading, menuSectionItems }, index) => (
+                          <MenuSection>
+                            {menuSectionHeading 
+                              ? (<MenuSectionHeading isSingleColumn={isSingleColumn}>{menuSectionHeading}</MenuSectionHeading>)
+                              : (index !== 0 && <MenuSectionSeparator isSingleColumn={isSingleColumn} />)}
+                            <MenuItems>
+                              {menuSectionItems.map(item => (
+                                <MenuItem>
+                                  <MenuItemPrice>{item.price}</MenuItemPrice>
+                                  <MenuItemName>{item.name}</MenuItemName>
+                                  {item.description && <MenuItemDescription dangerouslySetInnerHTML={{
+                                    __html: toHTML(item.description)
+                                  }} />}
+                                </MenuItem>
+                              ))}
+                            </MenuItems>
+                          </MenuSection>
+                        ))}
+                      </MenuSections>
+                    </MenuColumn>
+                  ))}
+                </MenuColumns>
+              </Menu>
+            </MenuWrapper>
+          )
+        }
         )}
       </Menus>
     </MenuContainer>

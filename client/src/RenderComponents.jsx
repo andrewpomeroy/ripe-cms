@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 // const sectionMarginY = "80px";
-const menuMarginX = "20px";
+const menuMarginX = "28px";
 const menuMarginY = "40px";
 const menuHeaderPaddingY = "32px";
 
@@ -22,13 +22,14 @@ export const Menus = styled.ul`
 `
 
 export const MenuWrapper = styled.li`
-  flex: 1 1 ;
+  flex: ${props => props.isSingleColumn ? ".66" : "1"};
   width: 100%;
   min-width: 400px;
   max-width: 1600px;
   margin-left: ${menuMarginX};
   margin-right: ${menuMarginX};
   padding-bottom: ${menuMarginY};
+  justify-content: center;
 `
 
 export const Menu = styled.div`
@@ -38,7 +39,8 @@ export const Menu = styled.div`
 `
 
 export const MenuHeader = styled.div`
-  padding: ${menuHeaderPaddingY} 0;
+  padding-top: ${menuHeaderPaddingY};
+  margin-bottom: ${menuHeaderPaddingY};
 `
 export const MenuTitle = styled.h3`
   text-align: center;
@@ -54,7 +56,7 @@ export const MenuSubtitle = styled.div`
   }
 `
 
-const columnMarginX = "20px";
+const columnMarginX = "28px";
 
 export const MenuColumns = styled.ul`
   display: flex;
@@ -67,17 +69,29 @@ export const MenuColumn = styled.li`
   margin-left: ${columnMarginX};
   margin-right: ${columnMarginX};
 `
+
+const sectionMarginY = "20px";
+
 export const MenuSections = styled.ul``
 export const MenuSection = styled.li`
   &:not(:last-child) {
-    padding-bottom: 18px;
+    margin-bottom: ${sectionMarginY};
   }
 `
+
 export const MenuSectionHeading = styled.h4`
   font-size: 18px;
+  font-weight: bold;
   padding-bottom: .05em;
-  margin-bottom: 24px;
+  margin: 0 0 ${sectionMarginY};
   border-bottom: 2px solid;
+`
+
+export const MenuSectionSeparator = styled.hr`
+  border-top: 0;
+  border-bottom: 2px solid;
+  margin: ${sectionMarginY} auto;
+  max-width: 66%;
 `
 export const MenuItems = styled.ul``
 export const MenuItem = styled.li`

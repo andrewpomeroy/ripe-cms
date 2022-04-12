@@ -33,19 +33,18 @@ const menuItem = {
     //   title: "description",
     // },
   ],
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //     // description: 'description',
-  //     price: 'price'
-  //   },
-  //   prepare({ title, price }) {
-  //     return {
-  //       title: `${title}${price && ` (${price})`}`,
-  //       subtitle: price
-  //     }
-  //   }
-  // }
+  preview: {
+    select: {
+      name: 'name',
+      price: 'price'
+    },
+    prepare({ name, price }) {
+      return {
+        title: name,
+        subtitle: price
+      }
+    }
+  }
 }
 
 export default menuItem;

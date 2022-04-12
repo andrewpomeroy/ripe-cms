@@ -19,17 +19,20 @@ export const Menus = styled.ul`
   padding-left: calc(${menuMarginX} / 2);
   padding-right: calc(${menuMarginX} / 2);
   margin-bottom: -${menuMarginY};
+  justify-content: center;
 `
 
+const menuMaxWidth = 1000;
+const singleColumnMenuMaxWidth = 660;
+
 export const MenuWrapper = styled.li`
-  flex: ${props => props.isSingleColumn ? ".66" : "1"};
+  flex: ${props => props.isSingleColumn ? (singleColumnMenuMaxWidth / menuMaxWidth) : 1} 1;
   width: 100%;
   min-width: 400px;
-  max-width: 1600px;
+  max-width: ${props => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
   margin-left: ${menuMarginX};
   margin-right: ${menuMarginX};
   padding-bottom: ${menuMarginY};
-  justify-content: center;
 `
 
 export const Menu = styled.div`

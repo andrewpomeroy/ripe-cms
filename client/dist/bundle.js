@@ -3312,7 +3312,6 @@ float: right;
     if (data) {
       menus = data.result;
     }
-    console.log("%c\u{1F4A3}\uFE0F menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
     if (menus)
       return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => {
         const isSingleColumn = menu.columns?.length === 1;
@@ -3332,7 +3331,7 @@ float: right;
           isSingleColumn
         }, menuSectionHeading) : index !== 0 && /* @__PURE__ */ v(MenuSectionSeparator, {
           isSingleColumn
-        }), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, /* @__PURE__ */ v(MenuItemPrice, null, item.price), /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
+        }), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, item.price && /* @__PURE__ */ v(MenuItemPrice, null, item.price), item.name && /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
           dangerouslySetInnerHTML: {
             __html: toHTML(item.description)
           }

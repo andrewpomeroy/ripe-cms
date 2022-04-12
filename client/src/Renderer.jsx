@@ -28,9 +28,7 @@ export const Renderer = ({ data }) => {
   if (data) {
     menus = data.result;
   }
-
-  console.log("%c💣️ menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
-
+  
   if (menus) return (
     <MenuContainer>
       <Menus>
@@ -57,8 +55,8 @@ export const Renderer = ({ data }) => {
                             <MenuItems>
                               {menuSectionItems.map(item => (
                                 <MenuItem>
-                                  <MenuItemPrice>{item.price}</MenuItemPrice>
-                                  <MenuItemName>{item.name}</MenuItemName>
+                                  {item.price && <MenuItemPrice>{item.price}</MenuItemPrice>}
+                                  {item.name && <MenuItemName>{item.name}</MenuItemName>}
                                   {item.description && <MenuItemDescription dangerouslySetInnerHTML={{
                                     __html: toHTML(item.description)
                                   }} />}

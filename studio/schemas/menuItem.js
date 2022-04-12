@@ -9,7 +9,6 @@ const menuItem = {
       name: "name",
       type: "string",
       title: "Name",
-      validation: Rule => Rule.required()
     },
     {
       name: "description",
@@ -40,7 +39,7 @@ const menuItem = {
     },
     prepare({ name, price }) {
       return {
-        title: name,
+        title: name || "— No title —",
         subtitle: price
       }
     }

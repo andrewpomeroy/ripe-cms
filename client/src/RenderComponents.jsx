@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 // const sectionMarginY = "80px";
 const menuMarginX = "20px";
 const menuMarginY = "40px";
+const menuHeaderPaddingY = "32px";
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -31,16 +32,26 @@ export const MenuWrapper = styled.li`
 `
 
 export const Menu = styled.div`
-  padding: 0 40px;
+  padding: 0 40px ${menuHeaderPaddingY};
   border-radius: 5px;
   background-color: #fefaf4;
 `
 
+export const MenuHeader = styled.div`
+  padding: ${menuHeaderPaddingY} 0;
+`
 export const MenuTitle = styled.h3`
   text-align: center;
   font-size: 38px;
-  margin: 0;
-  padding: .75em 0;
+  margin: 0 0 .125em;
+`
+export const MenuSubtitle = styled.div`
+  p {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+  }
 `
 
 const columnMarginX = "20px";
@@ -88,7 +99,7 @@ float: right;
 export const MenuItemDescription = styled.div`
   p {
     font-size: 15px;
-    padding-bottom: 0;
+    margin-bottom: 0;
     line-height: 1.25;
   }
 `

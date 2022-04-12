@@ -17,6 +17,8 @@ import {
   MenuItemPrice,
   MenuItemName,
   MenuItemDescription,
+  MenuSubtitle,
+  MenuHeader,
 } from './RenderComponents';
 
 export const Renderer = ({ data }) => {
@@ -26,13 +28,20 @@ export const Renderer = ({ data }) => {
     menus = data.result;
   }
 
+  console.log("%c💣️ menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
+
   if (menus) return (
     <MenuContainer>
       <Menus>
         {menus.map(menu => 
           <MenuWrapper key={menu.title}>
             <Menu key={menu.title}>
-              <MenuTitle>{menu.title}</MenuTitle>
+              <MenuHeader>
+                <MenuTitle>{menu.title}</MenuTitle>
+                {menu.subtitle?.length && <MenuSubtitle dangerouslySetInnerHTML={{
+                  __html: toHTML(menu.subtitle)
+                }} />}
+              </MenuHeader>
               <MenuColumns>
                 {menu.columns.map((column) => (
                   <MenuColumn>

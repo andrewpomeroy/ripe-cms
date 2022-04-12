@@ -14,8 +14,8 @@ const menuColumn = {
   ],
   preview: {
     prepare(selection, something) {
-      console.log("%c💣️ selection", "background: aliceblue; color: dodgerblue; font-weight: bold", selection);
-      console.log("%c💣️ something", "background: aliceblue; color: dodgerblue; font-weight: bold", something);
+      // console.log("%c💣️ selection", "background: aliceblue; color: dodgerblue; font-weight: bold", selection);
+      // console.log("%c💣️ something", "background: aliceblue; color: dodgerblue; font-weight: bold", something);
       return {
         title: "Column"
       }

@@ -2,7 +2,7 @@
 import { h, render } from 'preact';
 import { App } from './App';
 
-import './harness/theme.css';
+// import './harness/theme.css';
 
 const ripe_menu_app_id_default = "ripe-menu-app";
 let appId;

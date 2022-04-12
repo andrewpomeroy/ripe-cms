@@ -3198,7 +3198,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var emotion_styled_browser_esm_default = newStyled;
 
   // src/RenderComponents.jsx
-  var menuMarginX = "20px";
+  var menuMarginX = "28px";
   var menuMarginY = "40px";
   var menuHeaderPaddingY = "32px";
   var MenuContainer = emotion_styled_browser_esm_default.div`
@@ -3216,13 +3216,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   margin-bottom: -${menuMarginY};
 `;
   var MenuWrapper = emotion_styled_browser_esm_default.li`
-  flex: 1 1 ;
+  flex: ${(props) => props.isSingleColumn ? ".66" : "1"};
   width: 100%;
   min-width: 400px;
   max-width: 1600px;
   margin-left: ${menuMarginX};
   margin-right: ${menuMarginX};
   padding-bottom: ${menuMarginY};
+  justify-content: center;
 `;
   var Menu = emotion_styled_browser_esm_default.div`
   padding: 0 40px ${menuHeaderPaddingY};
@@ -3230,7 +3231,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   background-color: #fefaf4;
 `;
   var MenuHeader = emotion_styled_browser_esm_default.div`
-  padding: ${menuHeaderPaddingY} 0;
+  padding-top: ${menuHeaderPaddingY};
+  margin-bottom: ${menuHeaderPaddingY};
 `;
   var MenuTitle = emotion_styled_browser_esm_default.h3`
   text-align: center;
@@ -3245,7 +3247,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     font-style: italic;
   }
 `;
-  var columnMarginX = "20px";
+  var columnMarginX = "28px";
   var MenuColumns = emotion_styled_browser_esm_default.ul`
   display: flex;
   flex-direction: row;
@@ -3257,17 +3259,25 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   margin-left: ${columnMarginX};
   margin-right: ${columnMarginX};
 `;
+  var sectionMarginY = "20px";
   var MenuSections = emotion_styled_browser_esm_default.ul``;
   var MenuSection = emotion_styled_browser_esm_default.li`
   &:not(:last-child) {
-    padding-bottom: 18px;
+    margin-bottom: ${sectionMarginY};
   }
 `;
   var MenuSectionHeading = emotion_styled_browser_esm_default.h4`
   font-size: 18px;
+  font-weight: bold;
   padding-bottom: .05em;
-  margin-bottom: 24px;
+  margin: 0 0 ${sectionMarginY};
   border-bottom: 2px solid;
+`;
+  var MenuSectionSeparator = emotion_styled_browser_esm_default.hr`
+  border-top: 0;
+  border-bottom: 2px solid;
+  margin: ${sectionMarginY} auto;
+  max-width: 66%;
 `;
   var MenuItems = emotion_styled_browser_esm_default.ul``;
   var MenuItem = emotion_styled_browser_esm_default.li`
@@ -3302,19 +3312,30 @@ float: right;
     }
     console.log("%c\u{1F4A3}\uFE0F menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
     if (menus)
-      return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => /* @__PURE__ */ v(MenuWrapper, {
-        key: menu.title
-      }, /* @__PURE__ */ v(Menu, {
-        key: menu.title
-      }, /* @__PURE__ */ v(MenuHeader, null, /* @__PURE__ */ v(MenuTitle, null, menu.title), menu.subtitle?.length && /* @__PURE__ */ v(MenuSubtitle, {
-        dangerouslySetInnerHTML: {
-          __html: toHTML(menu.subtitle)
-        }
-      })), /* @__PURE__ */ v(MenuColumns, null, menu.columns.map((column2) => /* @__PURE__ */ v(MenuColumn, null, /* @__PURE__ */ v(MenuSections, null, column2.content.map(({ menuSectionHeading, menuSectionItems }) => /* @__PURE__ */ v(MenuSection, null, /* @__PURE__ */ v(MenuSectionHeading, null, menuSectionHeading), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, /* @__PURE__ */ v(MenuItemPrice, null, item.price), /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
-        dangerouslySetInnerHTML: {
-          __html: toHTML(item.description)
-        }
-      })))))))))))))));
+      return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => {
+        const isSingleColumn = menu.columns?.length === 1;
+        return /* @__PURE__ */ v(MenuWrapper, {
+          key: menu.title,
+          isSingleColumn
+        }, /* @__PURE__ */ v(Menu, {
+          key: menu.title,
+          isSingleColumn
+        }, /* @__PURE__ */ v(MenuHeader, null, /* @__PURE__ */ v(MenuTitle, null, menu.title), menu.subtitle?.length && /* @__PURE__ */ v(MenuSubtitle, {
+          dangerouslySetInnerHTML: {
+            __html: toHTML(menu.subtitle)
+          }
+        })), /* @__PURE__ */ v(MenuColumns, null, menu.columns.map((column2) => /* @__PURE__ */ v(MenuColumn, {
+          isSingleColumn
+        }, /* @__PURE__ */ v(MenuSections, null, column2.content.map(({ menuSectionHeading, menuSectionItems }, index) => /* @__PURE__ */ v(MenuSection, null, menuSectionHeading ? /* @__PURE__ */ v(MenuSectionHeading, {
+          isSingleColumn
+        }, menuSectionHeading) : index !== 0 && /* @__PURE__ */ v(MenuSectionSeparator, {
+          isSingleColumn
+        }), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, /* @__PURE__ */ v(MenuItemPrice, null, item.price), /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
+          dangerouslySetInnerHTML: {
+            __html: toHTML(item.description)
+          }
+        }))))))))))));
+      })));
     else
       return null;
   };

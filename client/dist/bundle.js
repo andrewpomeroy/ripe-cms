@@ -3200,6 +3200,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   // src/RenderComponents.jsx
   var menuMarginX = "20px";
   var menuMarginY = "40px";
+  var menuHeaderPaddingY = "32px";
   var MenuContainer = emotion_styled_browser_esm_default.div`
   display: flex;
   justify-content: center;
@@ -3224,15 +3225,25 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   padding-bottom: ${menuMarginY};
 `;
   var Menu = emotion_styled_browser_esm_default.div`
-  padding: 0 40px;
+  padding: 0 40px ${menuHeaderPaddingY};
   border-radius: 5px;
   background-color: #fefaf4;
+`;
+  var MenuHeader = emotion_styled_browser_esm_default.div`
+  padding: ${menuHeaderPaddingY} 0;
 `;
   var MenuTitle = emotion_styled_browser_esm_default.h3`
   text-align: center;
   font-size: 38px;
-  margin: 0;
-  padding: .75em 0;
+  margin: 0 0 .125em;
+`;
+  var MenuSubtitle = emotion_styled_browser_esm_default.div`
+  p {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+  }
 `;
   var columnMarginX = "20px";
   var MenuColumns = emotion_styled_browser_esm_default.ul`
@@ -3278,7 +3289,7 @@ float: right;
   var MenuItemDescription = emotion_styled_browser_esm_default.div`
   p {
     font-size: 15px;
-    padding-bottom: 0;
+    margin-bottom: 0;
     line-height: 1.25;
   }
 `;
@@ -3289,12 +3300,17 @@ float: right;
     if (data) {
       menus = data.result;
     }
+    console.log("%c\u{1F4A3}\uFE0F menus", "background: aliceblue; color: dodgerblue; font-weight: bold", menus);
     if (menus)
       return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => /* @__PURE__ */ v(MenuWrapper, {
         key: menu.title
       }, /* @__PURE__ */ v(Menu, {
         key: menu.title
-      }, /* @__PURE__ */ v(MenuTitle, null, menu.title), /* @__PURE__ */ v(MenuColumns, null, menu.columns.map((column2) => /* @__PURE__ */ v(MenuColumn, null, /* @__PURE__ */ v(MenuSections, null, column2.content.map(({ menuSectionHeading, menuSectionItems }) => /* @__PURE__ */ v(MenuSection, null, /* @__PURE__ */ v(MenuSectionHeading, null, menuSectionHeading), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, /* @__PURE__ */ v(MenuItemPrice, null, item.price), /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
+      }, /* @__PURE__ */ v(MenuHeader, null, /* @__PURE__ */ v(MenuTitle, null, menu.title), menu.subtitle?.length && /* @__PURE__ */ v(MenuSubtitle, {
+        dangerouslySetInnerHTML: {
+          __html: toHTML(menu.subtitle)
+        }
+      })), /* @__PURE__ */ v(MenuColumns, null, menu.columns.map((column2) => /* @__PURE__ */ v(MenuColumn, null, /* @__PURE__ */ v(MenuSections, null, column2.content.map(({ menuSectionHeading, menuSectionItems }) => /* @__PURE__ */ v(MenuSection, null, /* @__PURE__ */ v(MenuSectionHeading, null, menuSectionHeading), /* @__PURE__ */ v(MenuItems, null, menuSectionItems.map((item) => /* @__PURE__ */ v(MenuItem, null, /* @__PURE__ */ v(MenuItemPrice, null, item.price), /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
         dangerouslySetInnerHTML: {
           __html: toHTML(item.description)
         }
@@ -3304,7 +3320,7 @@ float: right;
   };
 
   // src/App.jsx
-  var url = "https://omde8c75.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20'menu'%20%26%26%20!(_id%20in%20path('drafts.**'))%5D%7B%0A%20%20title%2C%0A%20%20columns%5B%5D%20%7B%0A%20%20%20%20content%5B%5D%20%7B%0A%20%20%20%20%20%20menuSectionHeading%2C%0A%20%20%20%20%20%20menuSectionItems%5B%5D%20%7B%0A%20%20%20%20%20%20%20%20name%2C%0A%20%20%20%20%20%20%20%20price%2C%0A%20%20%20%20%20%20%20%20description%5B%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%0A%7D";
+  var url = "https://omde8c75.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20'menu'%20%26%26%20!(_id%20in%20path('drafts.**'))%5D%7Corder(orderRank)%7B%0A%20%20title%2C%0A%20%20subtitle%5B%5D%2C%0A%20%20columns%5B%5D%20%7B%0A%20%20%20%20content%5B%5D%20%7B%0A%20%20%20%20%20%20menuSectionHeading%2C%0A%20%20%20%20%20%20menuSectionItems%5B%5D%20%7B%0A%20%20%20%20%20%20%20%20name%2C%0A%20%20%20%20%20%20%20%20price%2C%0A%20%20%20%20%20%20%20%20description%5B%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%0A%7D";
   var App = class extends _ {
     constructor(props) {
       super();

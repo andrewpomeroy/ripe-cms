@@ -1,3 +1,4 @@
+import { BiFoodMenu } from 'react-icons/bi'
 import {
   orderRankField,
   orderRankOrdering,
@@ -6,7 +7,8 @@ import {
 const menu = {
   title: "Menus",
   name: "menu",
-  type: "document",
+  type: "document",        
+  icon: BiFoodMenu,
   orderings: [orderRankOrdering],
   fields: [
     // Minimum required configuration

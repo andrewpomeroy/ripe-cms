@@ -10,9 +10,6 @@ import {
   MenuTitle,
   MenuColumns,
   MenuColumn,
-  MenuSections,
-  MenuSection,
-  MenuItems,
   MenuItem,
   MenuItemPrice,
   MenuItemName,
@@ -21,6 +18,7 @@ import {
   MenuHeader,
   MenuSectionSeparator,
 } from './RenderComponents';
+import MenuHeaderUnderline from './MenuHeaderUnderline';
 
 export const Renderer = ({ data }) => {
 
@@ -28,6 +26,9 @@ export const Renderer = ({ data }) => {
   if (data) {
     menus = data.result;
   }
+
+  // const menuIds = ['daytimeMenu', 'eveningWeekendMenu'];
+  const menuColumns = ['menuColumnLeft', 'menuColumnRight']
   
   if (menus) return (
     <MenuContainer>
@@ -43,31 +44,41 @@ export const Renderer = ({ data }) => {
                     __html: toHTML(menu.subtitle)
                   }} />}
                 </MenuHeader>
+                <MenuHeaderUnderline width="90%" endFillerWidth="32px" />
                 <MenuColumns>
-                  {menu.columns.map((column) => (
-                    <MenuColumn isSingleColumn={isSingleColumn}>
-                      <MenuSections>
-                        {column.content.map(({ menuSectionHeading, menuSectionItems }, index) => (
-                          <MenuSection>
-                            {menuSectionHeading 
-                              ? (<MenuSectionHeading isSingleColumn={isSingleColumn}>{menuSectionHeading}</MenuSectionHeading>)
-                              : (index !== 0 && <MenuSectionSeparator isSingleColumn={isSingleColumn} />)}
-                            <MenuItems>
-                              {menuSectionItems.map(item => (
-                                <MenuItem>
-                                  {item.price && <MenuItemPrice>{item.price}</MenuItemPrice>}
-                                  {item.name && <MenuItemName>{item.name}</MenuItemName>}
-                                  {item.description && <MenuItemDescription dangerouslySetInnerHTML={{
-                                    __html: toHTML(item.description)
-                                  }} />}
-                                </MenuItem>
-                              ))}
-                            </MenuItems>
-                          </MenuSection>
-                        ))}
-                      </MenuSections>
+                  {menuColumns.filter(columnName => menu[columnName]?.length).map(columnName => {
+                    const column = menu[columnName];
+                    if (!column) return;
+                    const isSingleColumn = menuColumns.filter(columnName => menu[columnName]?.length).length === 1;
+                    return <MenuColumn isSingleColumn={isSingleColumn}>
+                      {column.map(item => {
+                        if (item._type === 'menuSubHeading') {
+                          return (
+                            <h.Fragment key={item.key}>
+                              <MenuSectionHeading key={item.key} isSingleColumn={isSingleColumn}>{item.menuSubHeadingText}</MenuSectionHeading>
+                              {isSingleColumn && <MenuSectionSeparator />}
+                            </h.Fragment>
+                          )
+                        }
+                        if (item._type === 'menuSeparator') {
+                          return <MenuSectionSeparator isSingleColumn={isSingleColumn} />
+                        }
+                        if (item._type === 'menuItem') {
+                          return (
+                            <MenuItem key={item.key} isSingleColumn={isSingleColumn}>
+                              { item.price && <MenuItemPrice hasTitle={item.name}>{item.price}</MenuItemPrice> }
+                              { item.name && <MenuItemName>{item.name}</MenuItemName> }
+                              {
+                                item.description && <MenuItemDescription dangerouslySetInnerHTML={{
+                                  __html: toHTML(item.description)
+                                }} />
+                              }
+                            </MenuItem>
+                          )
+                        }
+                      })}
                     </MenuColumn>
-                  ))}
+                  })}
                 </MenuColumns>
               </Menu>
             </MenuWrapper>

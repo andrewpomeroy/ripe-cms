@@ -1,17 +1,25 @@
 import { BiFoodMenu } from 'react-icons/bi'
 
 import S from '@sanity/desk-tool/structure-builder'
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 
 export default () =>
   S.list()
     .title('Menus')
     .items([
-      // Minimum required configuration
-      orderableDocumentListDeskItem({
-        type: 'menu',
-        title: 'Menus',
-        icon: BiFoodMenu
-      }),
-
+      S.listItem()
+        .title('Daytime Menu')
+        .icon(BiFoodMenu)
+        .child(
+          S.document()
+            .schemaType('menu')
+            .documentId('daytimeMenu')
+        ),
+      S.listItem()
+        .title('Evening & Weekend Menu')
+        .icon(BiFoodMenu)
+        .child(
+          S.document()
+            .schemaType('menu')
+            .documentId('eveningWeekendMenu')
+        ),
     ])

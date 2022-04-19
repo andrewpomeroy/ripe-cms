@@ -1,29 +1,35 @@
 import { BiFoodMenu } from 'react-icons/bi'
-import {
-  orderRankField,
-  orderRankOrdering,
-} from '@sanity/orderable-document-list';
 
 const menu = {
   title: "Menus",
   name: "menu",
   type: "document",        
   icon: BiFoodMenu,
-  orderings: [orderRankOrdering],
+  fieldsets: [
+    {
+      name: 'main',
+      title: "Main"
+    },
+    {
+      name: 'columns',
+      title: "Menu Items",
+      options: {
+        columns: 2
+      },
+    },
+  ],
   fields: [
-    // Minimum required configuration
-    orderRankField({ type: 'menu' }),
-    // OR you can override _some_ of the field settings
-    // orderRankField({ type: 'category', hidden: false }),
     {
       title: "Title",
       name: "title",
       type: "string",
+      fieldset: 'main',
     },
     {
       title: "Subtitle (hours, etc.)",
       name: "subtitle",
       type: 'array',
+      fieldset: 'main',
       of: [{
         type: 'block',
         styles: [],
@@ -31,12 +37,37 @@ const menu = {
       }]
     },
     {
-      title: "Columns",
-      name: "columns",
+      title: "Left column",
+      name: "menuColumnLeft",
       type: "array",
-      of: [{ type: "menuColumn" }],
-      validation: Rule => Rule.required().min(1).max(2),
-    }
+      fieldset: "columns",
+      of: [
+        { type: "menuItem" }, 
+        {    
+          type: "menuSubHeading",
+        },
+        {    
+          type: "menuSeparator",
+        }
+      ],
+    },
+    {
+      title: "Right column",
+      name: "menuColumnRight",
+      type: "array",
+      fieldset: "columns",
+      // doesn't work
+      hidden: (({ document }) => document._id === 'daytimeMenu'),
+      of: [
+        { type: "menuItem" }, 
+        {    
+          type: "menuSubHeading",
+        },
+        {
+          type: "menuSeparator",
+        }
+      ],
+    }    
   ],
   preview: {
     select: {

@@ -1,0 +1,21 @@
+*[_type == 'menu' && !(_id in path('drafts.**'))]{
+  _id,
+  title,
+  subtitle[],
+  menuColumnLeft[] {
+    _key,
+    _type,
+    menuSubHeadingText,
+    name,
+    price,
+    description[]
+  },
+  menuColumnRight[] {
+    _key,
+    _type,
+    menuSubHeadingText,
+    name,
+    price,
+    description[]
+  }
+}

@@ -1,0 +1,14 @@
+*[_type == 'menu' && !(_id in path('drafts.**'))]|order(orderRank){
+  title,
+  subtitle[],
+  columns[] {
+    content[] {
+      menuSectionHeading,
+      menuSectionItems[] {
+        name,
+        price,
+        description[]
+      }
+    }
+  } 
+}

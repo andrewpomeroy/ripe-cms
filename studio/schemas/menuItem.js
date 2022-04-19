@@ -1,9 +1,12 @@
-// import { fieldTypes } from "./pageBuilder";
+import { Flex, Stack, Box, Text } from '@sanity/ui';
+import React from 'react';
+import { BiRestaurant } from 'react-icons/bi'
 
 const menuItem = {
   name: "menuItem",
   type: "object",
   title: "Item",
+  icon: BiRestaurant,
   fields: [
     {
       name: "name",
@@ -15,10 +18,9 @@ const menuItem = {
       title: "Description",
       type: 'array',
       of: [{ type: 'block',
-        // of: [],
         styles: [],
         lists: []
-     }]
+      }]
     },
     {
       name: "price",
@@ -26,24 +28,27 @@ const menuItem = {
       title: "Price",
       description: "Aligned to the right of the column. Just keep it simple — if pricing is complicated, leave this blank and instead include pricing info in the description"
     }
-    // {
-    //   name: "menuSectionDescription",
-    //   type: "text",
-    //   title: "description",
-    // },
   ],
   preview: {
     select: {
       name: 'name',
-      price: 'price'
+      description: 'description',
+      price: 'price',
     },
-    prepare({ name, price }) {
-      return {
-        title: name || "— No title —",
-        subtitle: price
-      }
+    component: function Preview ( { value: { name, description, price} }) {
+      return (
+        <Flex direction="row" align="center">
+          <Box marginLeft={1} padding={1}>
+            <BiRestaurant size={21} />
+          </Box>
+          <Stack marginLeft={3} space={2} flex={1}>
+            <Text>{name}{price ? <span style={{ color: 'var(--card-muted-fg-color)' }}> (${price})</span> : ''}</Text>
+            <Text size={1} muted>{description}</Text>
+          </Stack>
+        </Flex>
+      )
     }
-  }
+  },
 }
 
 export default menuItem;

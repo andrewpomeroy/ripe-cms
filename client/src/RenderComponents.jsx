@@ -6,6 +6,13 @@ const menuPaddingX = "28px";
 const menuMarginY = '40px';
 const menuMarginX = '40px';
 const menuHeaderPaddingY = "12px";
+const sectionMarginY = "20px";
+
+const menuColumnBreakpoint = "700px";
+// const mobileBreakpoint = "700px";
+const halfMarginBreakpoint = "1350px";
+
+const atHalfMarginSize = (styles) => `@media (max-width: ${halfMarginBreakpoint}) { ${styles} }`;
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -18,9 +25,17 @@ export const Menus = styled.ul`
   flex: 0 0 auto;
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: 1150px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
   padding-left: calc(${menuPaddingX} / 2);
   padding-right: calc(${menuPaddingX} / 2);
-  margin-bottom: -${menuPaddingY};
+  ${atHalfMarginSize(`
+    margin-left: calc(${menuPaddingX} / 4);
+    margin-right: calc(${menuPaddingX} / 4);
+  `)}
+  margin-bottom: -${menuMarginY};
   justify-content: center;
 `
 
@@ -34,12 +49,28 @@ export const MenuWrapper = styled.li`
   max-width: ${props => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
   margin-left: ${menuPaddingX};
   margin-right: ${menuPaddingX};
-  margin-bottom: ${menuPaddingY};
+  ${atHalfMarginSize(`
+    margin-left: calc(${menuPaddingX} / 2);
+    margin-right: calc(${menuPaddingX} / 2);
+  `)}
+  margin-bottom: ${menuMarginY};
+`
+
+export const MenuBackgroundWrapper = styled.div`
   background-color: #fefaf4;
+  // Prevent collapsing borders & retain background color
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 `
 
 export const Menu = styled.div`
-  padding: 0 40px ${menuHeaderPaddingY};
+  padding-bottom: ${menuHeaderPaddingY};
+  padding-left: 40px;
+  padding-right: 40px;
+  ${atHalfMarginSize(`
+    padding-left: 20px;
+    padding-right: 20px;
+  `)}
   margin: ${menuMarginY} ${menuMarginX};
   border-radius: 5px;
   border: 30px solid;
@@ -58,7 +89,7 @@ export const MenuTitle = styled.h3`
   margin: 0 0 .125em;
 `
 export const MenuSubtitle = styled.div`
-  p {
+  & p {
     margin: 0;
     text-align: center;
     font-size: 20px;
@@ -71,16 +102,27 @@ const columnMarginX = "28px";
 export const MenuColumns = styled.ul`
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: ${menuColumnBreakpoint}) {
+    flex-direction: column;
+  }
   margin-left: -${columnMarginX};
   margin-right: -${columnMarginX};
+  // ${atHalfMarginSize(`
+  //   margin-left: calc(-${columnMarginX} / 2);
+  //   margin-right: calc(-${columnMarginX} / 2);
+  // `)}
+  margin-bottom: -${sectionMarginY};
 `
 export const MenuColumn = styled.li`
   flex: 1;
   margin-left: ${columnMarginX};
   margin-right: ${columnMarginX};
+  // ${atHalfMarginSize(`
+  //   margin-left: calc(${columnMarginX} / 2);
+  //   margin-right: calc(${columnMarginX} / 2);
+  // `)}
+  margin-bottom: ${sectionMarginY};
 `
-
-const sectionMarginY = "20px";
 
 export const MenuSections = styled.ul``
 export const MenuSection = styled.li`

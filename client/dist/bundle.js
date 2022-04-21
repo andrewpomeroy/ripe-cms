@@ -3342,7 +3342,7 @@ float: right;
   };
 
   // src/App.jsx
-  var url = "https://omde8c75.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20'menu'%20%26%26%20!(_id%20in%20path('drafts.**'))%5D%7Corder(orderRank)%7B%0A%20%20title%2C%0A%20%20subtitle%5B%5D%2C%0A%20%20columns%5B%5D%20%7B%0A%20%20%20%20content%5B%5D%20%7B%0A%20%20%20%20%20%20menuSectionHeading%2C%0A%20%20%20%20%20%20menuSectionItems%5B%5D%20%7B%0A%20%20%20%20%20%20%20%20name%2C%0A%20%20%20%20%20%20%20%20price%2C%0A%20%20%20%20%20%20%20%20description%5B%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%0A%7D";
+  var url = `https://omde8c75.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20'menu'%20%26%26%20!(_id%20in%20path('drafts.**'))%20%26%26%20!(_id%20in%20%5B'daytimeMenu'%2C%20'eveningWeekendMenu'%5D)%5D%7Corder(orderRank)%7B%0A%20title%2C%0A%20%20subtitle%5B%5D%2C%0A%20%20columns%5B%5D%20%7B%0A%20%20%20%20content%5B%5D%20%7B%0A%20%20%20%20%20%20menuSectionHeading%2C%0A%20%20%20%20%20%20menuSectionItems%5B%5D%20%7B%0A%20%20%20%20%20%20%20%20name%2C%0A%20%20%20%20%20%20%20%20price%2C%0A%20%20%20%20%20%20%20%20description%5B%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%0A%7D%0A`;
   var App = class extends _ {
     constructor(props) {
       super();

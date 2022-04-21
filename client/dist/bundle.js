@@ -3234,8 +3234,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var singleColumnMenuMaxWidth = 660;
   var MenuWrapper = emotion_styled_browser_esm_default.li`
   flex: ${(props) => props.isSingleColumn ? singleColumnMenuMaxWidth / menuMaxWidth : 1} 1;
-  width: 100%;
-  min-width: 400px;
   max-width: ${(props) => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
   margin-left: ${menuPaddingX};
   margin-right: ${menuPaddingX};

@@ -44,8 +44,6 @@ const singleColumnMenuMaxWidth = 660;
 
 export const MenuWrapper = styled.li`
   flex: ${props => props.isSingleColumn ? (singleColumnMenuMaxWidth / menuMaxWidth) : 1} 1;
-  width: 100%;
-  min-width: 400px;
   max-width: ${props => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
   margin-left: ${menuPaddingX};
   margin-right: ${menuPaddingX};

@@ -1,6 +1,6 @@
 {
   "name": "ripe-cms",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "client/dist/bundle.js",
   "scripts": {

@@ -2,8 +2,8 @@
 import { h } from 'preact';
 import styled from '@emotion/styled'
 
-const menuUnderlinePaddingTop = "12px";
-const menuUnderlinePaddingBottom = "20px";
+const menuUnderlinePaddingTop = "14px";
+const menuUnderlinePaddingBottom = "28px";
 
 export default function MenuHeaderUnderline ({width, endFillerWidth}) {
   return (
@@ -21,7 +21,7 @@ export default function MenuHeaderUnderline ({width, endFillerWidth}) {
   )
 }
 
-const height = "31px";
+const height = "16px";
 const UnderlineWrapper = styled.div`
   margin-top: ${menuUnderlinePaddingTop};
   margin-bottom: ${menuUnderlinePaddingBottom};

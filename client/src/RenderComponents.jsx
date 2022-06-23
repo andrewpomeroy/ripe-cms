@@ -7,12 +7,13 @@ const menuMarginY = '40px';
 const menuMarginX = '40px';
 const menuHeaderPaddingY = "12px";
 const sectionMarginY = "20px";
+const menuItemPaddingY = "28px";
 
 const menuColumnBreakpoint = "700px";
 // const mobileBreakpoint = "700px";
 const halfMarginBreakpoint = "1350px";
 
-const atHalfMarginSize = (styles) => `@media (max-width: ${halfMarginBreakpoint}) { ${styles} }`;
+const atHalfMarginSize = (styles) => `@media screen and (max-width: ${halfMarginBreakpoint}) { ${styles} }`;
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -37,14 +38,17 @@ export const Menus = styled.ul`
   `)}
   margin-bottom: -${menuMarginY};
   justify-content: center;
+  flex: 1;
 `
 
-const menuMaxWidth = 1000;
-const singleColumnMenuMaxWidth = 660;
+const menuMaxWidth = 900;
+const singleColumnMenuMaxWidth = 720;
 
 export const MenuWrapper = styled.li`
-  flex: ${props => props.isSingleColumn ? (singleColumnMenuMaxWidth / menuMaxWidth) : 1} 1;
-  max-width: ${props => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
+  
+  flex: 1;
+  // max-width: ${props => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
+  max-width: ${menuMaxWidth}px;
   margin-left: ${menuPaddingX};
   margin-right: ${menuPaddingX};
   ${atHalfMarginSize(`
@@ -82,7 +86,7 @@ export const MenuHeader = styled.div`
 `
 export const MenuTitle = styled.h3`
   text-align: center;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.2;
   margin: 0 0 .125em;
 `
@@ -98,6 +102,7 @@ export const MenuSubtitle = styled.div`
 const columnMarginX = "28px";
 
 export const MenuColumns = styled.ul`
+  flex: 1;
   display: flex;
   flex-direction: row;
   @media screen and (max-width: ${menuColumnBreakpoint}) {
@@ -129,44 +134,63 @@ export const MenuSection = styled.li`
   }
 `
 
+export const MenuSectionHeadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export const MenuSectionHeading = styled.h4`
-  font-size: 18px;
+  flex: 0 0 auto;
+  display: inline-block;
+  font-size: 24px;
   font-weight: bold;
-  padding-bottom: .05em;
+  // padding-bottom: .05em;
   margin: 0 0 ${sectionMarginY};
-  border-bottom: 2px solid;
+  // border-bottom: 2px solid;
+  text-align: center;
 `
 
 export const MenuSectionSeparator = styled.hr`
   border-top: 0;
-  border-bottom: 2px solid;
+  border-bottom: 1px solid;
   margin: 0 auto;
-  margin-bottom: ${sectionMarginY};
+  margin-bottom: ${menuItemPaddingY};
   max-width: 66%;
 `
 export const MenuItems = styled.ul``
 export const MenuItem = styled.li`
   &:not(:last-child) {
-    padding-bottom: 24px;
+    padding-bottom: ${menuItemPaddingY};
   }
 `
 export const MenuItemName = styled.h5`
-  font-size: 18px;
+  font-size: 17px;
   line-height: 18px;
   font-weight: 500;
+  // font-weight: 600;
   padding-bottom: 4px;
+  text-align: center;
+  @media print {
+    font-size: 9pt
+  }
 `
-export const MenuItemPrice = styled.div`
-  float: right;
+export const MenuItemPrice = styled.span`
+  // float: right;
   font-size: 16px;
   line-height: 18px;
   padding-left: 10px;
   padding-top: ${props => props.hasTitle ? '2px' : 0};
+  text-transform: none;
+  @media print {
+    font-size: 9pt
+  }
 `
-export const MenuItemDescription = styled.div`
+export const MenuItemDescription = styled.span`
   p {
+    display: inline;
     font-size: 15px;
     margin-bottom: 0;
     line-height: 1.25;
+    text-transform: none;
   }
 `

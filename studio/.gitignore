@@ -1,1 +1,2 @@
 .env.local
+*.tar.gz

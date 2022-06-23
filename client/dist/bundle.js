@@ -3204,9 +3204,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var menuMarginX = "40px";
   var menuHeaderPaddingY = "12px";
   var sectionMarginY = "20px";
+  var menuItemPaddingY = "28px";
   var menuColumnBreakpoint = "700px";
   var halfMarginBreakpoint = "1350px";
-  var atHalfMarginSize = (styles) => `@media (max-width: ${halfMarginBreakpoint}) { ${styles} }`;
+  var atHalfMarginSize = (styles) => `@media screen and (max-width: ${halfMarginBreakpoint}) { ${styles} }`;
   var MenuContainer = emotion_styled_browser_esm_default.div`
   display: flex;
   justify-content: center;
@@ -3229,12 +3230,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   `)}
   margin-bottom: -${menuMarginY};
   justify-content: center;
+  flex: 1;
 `;
-  var menuMaxWidth = 1e3;
-  var singleColumnMenuMaxWidth = 660;
+  var menuMaxWidth = 900;
+  var singleColumnMenuMaxWidth = 720;
   var MenuWrapper = emotion_styled_browser_esm_default.li`
-  flex: ${(props) => props.isSingleColumn ? singleColumnMenuMaxWidth / menuMaxWidth : 1} 1;
-  max-width: ${(props) => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
+  
+  flex: 1;
+  // max-width: ${(props) => props.isSingleColumn ? singleColumnMenuMaxWidth : menuMaxWidth}px;
+  max-width: ${menuMaxWidth}px;
   margin-left: ${menuPaddingX};
   margin-right: ${menuPaddingX};
   ${atHalfMarginSize(`
@@ -3269,7 +3273,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 `;
   var MenuTitle = emotion_styled_browser_esm_default.h3`
   text-align: center;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.2;
   margin: 0 0 .125em;
 `;
@@ -3283,6 +3287,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 `;
   var columnMarginX = "28px";
   var MenuColumns = emotion_styled_browser_esm_default.ul`
+  flex: 1;
   display: flex;
   flex-direction: row;
   @media screen and (max-width: ${menuColumnBreakpoint}) {
@@ -3312,50 +3317,68 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     margin-bottom: ${sectionMarginY};
   }
 `;
+  var MenuSectionHeadingWrapper = emotion_styled_browser_esm_default.div`
+  display: flex;
+  justify-content: center;
+`;
   var MenuSectionHeading = emotion_styled_browser_esm_default.h4`
-  font-size: 18px;
+  flex: 0 0 auto;
+  display: inline-block;
+  font-size: 24px;
   font-weight: bold;
-  padding-bottom: .05em;
+  // padding-bottom: .05em;
   margin: 0 0 ${sectionMarginY};
-  border-bottom: 2px solid;
+  // border-bottom: 2px solid;
+  text-align: center;
 `;
   var MenuSectionSeparator = emotion_styled_browser_esm_default.hr`
   border-top: 0;
-  border-bottom: 2px solid;
+  border-bottom: 1px solid;
   margin: 0 auto;
-  margin-bottom: ${sectionMarginY};
+  margin-bottom: ${menuItemPaddingY};
   max-width: 66%;
 `;
   var MenuItems = emotion_styled_browser_esm_default.ul``;
   var MenuItem = emotion_styled_browser_esm_default.li`
   &:not(:last-child) {
-    padding-bottom: 24px;
+    padding-bottom: ${menuItemPaddingY};
   }
 `;
   var MenuItemName = emotion_styled_browser_esm_default.h5`
-  font-size: 18px;
+  font-size: 17px;
   line-height: 18px;
   font-weight: 500;
+  // font-weight: 600;
   padding-bottom: 4px;
+  text-align: center;
+  @media print {
+    font-size: 9pt
+  }
 `;
-  var MenuItemPrice = emotion_styled_browser_esm_default.div`
-  float: right;
+  var MenuItemPrice = emotion_styled_browser_esm_default.span`
+  // float: right;
   font-size: 16px;
   line-height: 18px;
   padding-left: 10px;
   padding-top: ${(props) => props.hasTitle ? "2px" : 0};
+  text-transform: none;
+  @media print {
+    font-size: 9pt
+  }
 `;
-  var MenuItemDescription = emotion_styled_browser_esm_default.div`
+  var MenuItemDescription = emotion_styled_browser_esm_default.span`
   p {
+    display: inline;
     font-size: 15px;
     margin-bottom: 0;
     line-height: 1.25;
+    text-transform: none;
   }
 `;
 
   // src/MenuHeaderUnderline.jsx
-  var menuUnderlinePaddingTop = "12px";
-  var menuUnderlinePaddingBottom = "20px";
+  var menuUnderlinePaddingTop = "14px";
+  var menuUnderlinePaddingBottom = "28px";
   function MenuHeaderUnderline({ width, endFillerWidth }) {
     return /* @__PURE__ */ v(UnderlineWrapper, {
       width
@@ -3365,7 +3388,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       width: endFillerWidth
     }), /* @__PURE__ */ v(UnderlineEndCap, null));
   }
-  var height = "31px";
+  var height = "16px";
   var UnderlineWrapper = emotion_styled_browser_esm_default.div`
   margin-top: ${menuUnderlinePaddingTop};
   margin-bottom: ${menuUnderlinePaddingBottom};
@@ -3419,8 +3442,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     const menuColumns = ["menuColumnLeft", "menuColumnRight"];
     if (menus)
-      return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu) => {
-        const isSingleColumn = menu.columns?.length === 1;
+      return /* @__PURE__ */ v(MenuContainer, null, /* @__PURE__ */ v(Menus, null, menus.map((menu, index) => {
+        const isSingleColumn = true;
         return /* @__PURE__ */ v(MenuWrapper, {
           key: menu.title,
           isSingleColumn
@@ -3432,23 +3455,25 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             __html: toHTML(menu.subtitle)
           }
         })), /* @__PURE__ */ v(MenuHeaderUnderline, {
-          width: "90%",
+          width: "75%",
           endFillerWidth: "32px"
-        }), /* @__PURE__ */ v(MenuColumns, null, menuColumns.filter((columnName) => menu[columnName]?.length).map((columnName) => {
+        }), /* @__PURE__ */ v(MenuColumns, null, menuColumns.filter((columnName) => menu[columnName]?.length).map((columnName, index2) => {
+          if (index2 === 1)
+            return null;
           const column2 = menu[columnName];
           if (!column2)
             return;
           const isSingleColumn2 = menuColumns.filter((columnName2) => menu[columnName2]?.length).length === 1;
           return /* @__PURE__ */ v(MenuColumn, {
             isSingleColumn: isSingleColumn2
-          }, column2.map((item) => {
+          }, column2.map((item, index3) => {
             if (item._type === "menuSubHeading") {
-              return /* @__PURE__ */ v("div", {
+              return /* @__PURE__ */ v("div", null, /* @__PURE__ */ v(MenuSectionSeparator, null), /* @__PURE__ */ v(MenuSectionHeadingWrapper, {
                 key: item.key
               }, /* @__PURE__ */ v(MenuSectionHeading, {
                 key: item.key,
                 isSingleColumn: isSingleColumn2
-              }, item.menuSubHeadingText), isSingleColumn2 && /* @__PURE__ */ v(MenuSectionSeparator, null));
+              }, item.menuSubHeadingText)));
             }
             if (item._type === "menuSeparator") {
               return /* @__PURE__ */ v(MenuSectionSeparator, {
@@ -3459,13 +3484,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
               return /* @__PURE__ */ v(MenuItem, {
                 key: item.key,
                 isSingleColumn: isSingleColumn2
-              }, item.price && /* @__PURE__ */ v(MenuItemPrice, {
-                hasTitle: item.name
-              }, item.price), item.name && /* @__PURE__ */ v(MenuItemName, null, item.name), item.description && /* @__PURE__ */ v(MenuItemDescription, {
+              }, item.name && /* @__PURE__ */ v(MenuItemName, null, item.name, " ", item.description && /* @__PURE__ */ v(MenuItemDescription, {
                 dangerouslySetInnerHTML: {
                   __html: toHTML(item.description)
                 }
-              }));
+              }), item.price && /* @__PURE__ */ v(MenuItemPrice, {
+                hasTitle: item.name
+              }, item.price)));
             }
           }));
         })))));
